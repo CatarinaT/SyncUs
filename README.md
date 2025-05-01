@@ -4,8 +4,11 @@ Cria o teu próprio som a partir de movimentos captados pela câmara do computad
 
 ## Equipa
 Catarina Pereira
+
 Licinia Mendes
+
 Filipe Gaio
+
 Daniel Cardoso
 
 
