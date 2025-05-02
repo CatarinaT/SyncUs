@@ -59,7 +59,7 @@ animation-delay: 8s;
 .follow-mouse {
     width: 200px;
     height: 200px;
-    background: rgba(255, 94, 0, 0.479);
+    background: rgba(224, 177, 247, 0.479);
     border-radius: 50%;
     filter: blur(30px);
     pointer-events: none;
@@ -101,7 +101,7 @@ margin-top: 8rem;
 color: white;
 background: rgba(255, 255, 255, 0.1);
 border: none;
-border-radius: 10px;
+border-radius: 100px;
 backdrop-filter: blur(10px);
 cursor: pointer;
 transition: background 0.3s ease;
