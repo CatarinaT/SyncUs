@@ -1,12 +1,11 @@
 <pre><code> 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * <b>Copyright (c) 2025 Your Name or Organization.</b><br>                                                        *
- * <br>                                                                                                            *
- * This program and the accompanying materials are made available under the<br>                                    *
- * terms of the Eclipse Public License 2.0 which is available at:<br>                                              *
- * <a href="http://www.eclipse.org/legal/epl-2.0">http://www.eclipse.org/legal/epl-2.0</a><br>                     *
- * <br>                                                                                                            *
- * <b>SPDX-License-Identifier: EPL-2.0</b><br>                                                                     *
+ *                                   Copyright (c) 2025 Your Name or Organization.                                 *
+ *                                                                                                                 *
+ *          This program and the accompanying materials are made available under the terms of the Eclipse          *
+ *                  Public License 2.0 which is available at: http://www.eclipse.org/legal/epl-2.0                 *
+ *                                                                                                                 *
+ *                                           SPDX-License-Identifier: EPL-2.0                                      *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 </code></pre>
 
