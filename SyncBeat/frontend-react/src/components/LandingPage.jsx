@@ -29,7 +29,7 @@ function LandingPage() {
         <div className="ball"></div>
       </div>
       <div className="content">
-        <h1 className="project-title">Sync Beat</h1>
+        <h1 className="project-title">SyncBeat</h1>
         <button className="start-button" onClick={() => navigate('/camera')}>Start Your Experience</button>
       </div>
     </div>

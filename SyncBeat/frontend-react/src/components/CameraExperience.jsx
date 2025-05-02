@@ -6,6 +6,8 @@ import { Hands, HAND_CONNECTIONS } from '@mediapipe/hands';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 
+import { processHandMovement } from './MovementToSound';
+
 function CameraExperience() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -30,6 +32,8 @@ function CameraExperience() {
         for (const landmarks of results.multiHandLandmarks) {
           drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, { color: '#00FF00', lineWidth: 5 });
           drawLandmarks(canvasCtx, landmarks, { color: '#FF0000', lineWidth: 2 });
+
+          processHandMovement(landmarks);
         }
       }
 
@@ -45,7 +49,7 @@ function CameraExperience() {
 
     // Mudar aqyu cenas, max maos para limitar para performance
     hands.setOptions({
-      maxNumHands: 8,
+      maxNumHands: 1,
       modelComplexity: 1,
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5,
@@ -83,10 +87,20 @@ function CameraExperience() {
         <h1 className="title-camera">Express yourself</h1>
       </div>
       <div className="camera-container">
-        {/* A referência ao vídeo */}
         <video ref={videoRef} autoPlay playsInline className="camera-feed"></video>
-        {/* A referência ao canvas para desenhar as mãos detectadas */}
         <canvas ref={canvasRef} className="tracking-canvas" />
+        <canvas
+          id="trailCanvas"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        ></canvas>
       </div>
       {movementDetected && <div className="movement-indicator">Movimento Detectado!</div>}
     </div>
