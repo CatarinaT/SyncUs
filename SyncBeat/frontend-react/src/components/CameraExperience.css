@@ -1,0 +1,127 @@
+.camera-experience {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background-camera {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.ball-camera {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(210, 59, 248, 0.534);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 10s infinite ease-in-out;
+}
+
+.ball-camera:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+.ball-camera:nth-child(2) {
+  top: 30%;
+  left: 90%;
+  animation-delay: 4s;
+}
+
+.ball-camera:nth-child(3) {
+  top: 80%;
+  left: 90%;
+  animation-delay: 6s;
+}
+
+.ball-camera:nth-child(4) {
+  top: 80%;
+  left: 10%;
+  animation-delay: 8s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.header-camera {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  color: white;
+}
+
+.syncbeat-logo-camera {
+  padding-left: 4rem;
+  font-size: 1.5rem;
+}
+
+.content-camera {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white;
+  text-align: center;
+}
+
+.title-camera {
+  font-size: 3rem;
+}
+
+.camera-container {
+  position: relative;
+  z-index: 2;
+  width: 80%; /* Ajuste para 80% da largura */
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 5px solid white; /* Borda branca */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.camera-feed {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(-1);
+}
+
+.tracking-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.movement-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: red;
+  font-weight: bold;
+}
