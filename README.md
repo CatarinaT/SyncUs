@@ -1,3 +1,13 @@
+/***************************
+ * Copyright (c) 2025 SyncUs (ShiftAPPens).
+ *
+ * This project and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ ***************************/
+
 # SyncBeat
 Create your own sound from movements captured by your computer's camera or through drawings on your tablet. Each gesture or stroke becomes music, bringing your creativity to life in sound, whether it's realistic or abstract.
 
