@@ -10,6 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@mediapipe/hands": "^0.4.1675469240",
+    "@tensorflow-models/pose-detection": "^2.1.3",
+    "@tensorflow/tfjs": "^4.22.0",
     "howler": "^2.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

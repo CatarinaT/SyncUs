@@ -1,60 +1,70 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import tracking from 'tracking'; // Import the tracking library
 import './CameraExperience.css';
+
+// Importa as dependências necessárias do MediaPipe Hands
+import { Hands, HAND_CONNECTIONS } from '@mediapipe/hands';
+import { Camera } from '@mediapipe/camera_utils';
+import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 
 function CameraExperience() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+
   const [movementDetected, setMovementDetected] = useState(false);
-  
+
   useEffect(() => {
-    const tracker = new window.tracking.ObjectTracker('face');
-    console.log(tracker);
-  
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then((stream) => {
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-  
-          videoRef.current.onloadedmetadata = () => {
-            canvasRef.current.width = videoRef.current.videoWidth;
-            canvasRef.current.height = videoRef.current.videoHeight;
-          };
-  
-          videoRef.current.onplay = () => {
-            tracking.track(videoRef.current, tracker);
-          };
+    const videoElement = videoRef.current;
+    const canvasElement = canvasRef.current;
+    const canvasCtx = canvasElement.getContext('2d');
+
+    // Função que será chamada ao processar os resultados da detecção de mãos
+    function onResults(results) {
+      canvasCtx.save();
+      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      canvasCtx.translate(canvasElement.width, 0);
+      canvasCtx.scale(-1, 1);
+      canvasCtx.drawImage(results.image, 0, 0, canvasElement.width, canvasElement.height);
+
+      // Desenha os pontos e as conexões das mãos detectadas
+      if (results.multiHandLandmarks) {
+        for (const landmarks of results.multiHandLandmarks) {
+          drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, { color: '#00FF00', lineWidth: 5 });
+          drawLandmarks(canvasCtx, landmarks, { color: '#FF0000', lineWidth: 2 });
         }
-      })
-      .catch((err) => {
-        console.error('Erro ao acessar a câmera:', err);
-      });
-  
-    tracker.on('track', (event) => {
-        console.log(event.data);
-      const canvas = canvasRef.current;
-      const context = canvas.getContext('2d');
-      context.clearRect(0, 0, canvas.width, canvas.height);
-  
-      let isMovementDetected = false;
-  
-      event.data.forEach((rect) => {
-        context.strokeStyle = '#ff0000';
-        context.lineWidth = 3;
-        context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-  
-        if (rect.width > 100 && rect.height > 100) {
-          isMovementDetected = true;
-        }
-      });
-  
-      setMovementDetected(isMovementDetected);
-    });
-  
-    return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-        videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
       }
+
+      canvasCtx.restore();
+    }
+
+    // Configuração do MediaPipe Hands
+    const hands = new Hands({
+      locateFile: (file) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+      },
+    });
+
+    // Mudar aqyu cenas, max maos para limitar para performance
+    hands.setOptions({
+      maxNumHands: 8,
+      modelComplexity: 1,
+      minDetectionConfidence: 0.5,
+      minTrackingConfidence: 0.5,
+    });
+
+    hands.onResults(onResults);
+
+    const camera = new Camera(videoElement, {
+      onFrame: async () => {
+        await hands.send({ image: videoElement });
+      },
+      width: 1280,
+      height: 720,
+    });
+
+    camera.start();
+
+    return () => {
+      camera.stop();
     };
   }, []);
 
@@ -73,7 +83,9 @@ function CameraExperience() {
         <h1 className="title-camera">Express yourself</h1>
       </div>
       <div className="camera-container">
+        {/* A referência ao vídeo */}
         <video ref={videoRef} autoPlay playsInline className="camera-feed"></video>
+        {/* A referência ao canvas para desenhar as mãos detectadas */}
         <canvas ref={canvasRef} className="tracking-canvas" />
       </div>
       {movementDetected && <div className="movement-indicator">Movimento Detectado!</div>}
