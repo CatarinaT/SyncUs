@@ -4,7 +4,7 @@ const activeSounds = [];
 var lastHandPosition = { x: 0, y: 0 };
 var alreadyPlayed = false;
 var bigCooldown = false;
-const pack = 0; // 0 - Default pack, 1 - RnB pack, 2 - Beatrice pack
+const pack = 1; // 0 - Default pack, 1 - RnB pack, 2 - Beatrice pack
 
 export function playSound(soundFile) {
     const now = Date.now();
@@ -98,6 +98,7 @@ export function playSound(soundFile) {
             break;
           case 1: // RnB pack
             playSound('/assets/music/rnb/fluteIntro.mp3');
+            break;
           case 2: // Beatrice pack
             playSound('/assets/music/beatrice/voz.mp3');
             break;
@@ -131,6 +132,7 @@ export function playSound(soundFile) {
             break;
           case 1: // RnB pack
             playSound('/assets/music/rnb/guitarIntro.mp3');
+            break;
           case 2: // Beatrice pack
             playSound('/assets/music/beatrice/precurssao.mp3');
             break;
@@ -144,6 +146,7 @@ export function playSound(soundFile) {
             break;
           case 1: // RnB pack
             playSound('/assets/music/rnb/musicaCompleta.mp3');
+            break;
           case 2: // Beatrice pack
             playSound('/assets/music/beatrice/bassMidChorus.mp3');
             break;
@@ -157,6 +160,7 @@ export function playSound(soundFile) {
             break;
           case 1: // RnB pack
             playSound('/assets/music/rnb/justBassIntro.mp3');
+            break;
           case 2: // Beatrice pack
             playSound('/assets/music/beatrice/piano2ndChorus.mp3');
             break;

@@ -69,8 +69,12 @@
 }
 
 .syncbeat-logo-camera {
-  padding-left: 4rem;
-  font-size: 1.5rem;
+  font-family: "jsMath-cmmi10", serif;
+  margin: 0;
+  padding: 0;
+  padding-left: 2rem;
+  padding-top: 0.7rem;
+  font-size: 2.5rem;
 }
 
 .content-camera {
@@ -84,6 +88,8 @@
 }
 
 .title-camera {
+  font-family: "Josefin Sans", sans-serif;  
+  letter-spacing: 5px;
   font-size: 3rem;
 }
 
