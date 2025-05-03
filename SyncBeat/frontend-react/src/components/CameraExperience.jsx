@@ -49,7 +49,7 @@ function CameraExperience() {
 
     // Mudar aqyu cenas, max maos para limitar para performance
     hands.setOptions({
-      maxNumHands: 1,
+      maxNumHands: 4,
       modelComplexity: 1,
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5,
