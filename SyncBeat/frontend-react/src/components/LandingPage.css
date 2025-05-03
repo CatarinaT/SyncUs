@@ -62,7 +62,7 @@
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  z-index: 1000;
+  z-index: 100;
 }
 
 @keyframes float-landing {
@@ -85,12 +85,24 @@
 .project-title {
   font-family: "jsMath-cmmi10", serif;
   font-size: 6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   margin-top: 5rem;
   /* backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.1); */
   padding: 1rem 2rem;
   border-radius: 10px;
+}
+
+.project-sub-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.7rem;
+  margin-bottom: 0;
+  padding: 0;
+  border-radius: 10px;
+  text-align: center;
+  letter-spacing: 8px;
+  /* backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1); */
 }
 
 .start-button {
@@ -109,4 +121,64 @@
 
 .start-button:hover {
   background: rgba(255, 255, 255, 0.2);
+  border: solid 4px rgba(228, 53, 161, 0.5);
+}
+.instructions-button {
+  font-size: large;
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  padding: 20px 30px;
+  color: white;
+  border: solid 2px rgba(228, 53, 161, 0.3);
+  border-radius: 100px;
+  backdrop-filter: blur(40px);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.instructions-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: solid 2px var(--primary-color);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 90vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80ch;
+  height: 90%;
+  max-width: 500px;
+  text-align: center;
+  z-index: 100;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
 }
