@@ -4,7 +4,7 @@ const activeSounds = [];
 var lastHandPosition = { x: 0, y: 0 };
 var alreadyPlayed = false;
 var bigCooldown = false;
-const pack = 3; // 0 - Default pack, 1 - RnB pack, 2 - Beatrice pack, 3 - PianoStrings pack
+const pack = 2; // 0 - Default pack, 1 - RnB pack, 2 - Beatrice pack, 3 - PianoStrings pack
 
 export function playSound(soundFile) {
     const now = Date.now();
