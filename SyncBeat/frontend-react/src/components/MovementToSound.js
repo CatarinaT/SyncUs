@@ -4,6 +4,7 @@ const activeSounds = [];
 var lastHandPosition = { x: 0, y: 0 };
 var alreadyPlayed = false;
 var bigCooldown = false;
+const pack = 0; // 0 - Default pack, 1 - RnB pack, 2 - Beatrice pack
 
 export function playSound(soundFile) {
     const now = Date.now();
@@ -91,23 +92,77 @@ export function playSound(soundFile) {
       console.log("fast movement while poiting");
       bigCooldown = true;
       if (lastHandPosition.y > wrist.y) { // Movimento para cima
-        playSound('/assets/music/pianoRunHandmovement.mp3');
+        switch (pack) {
+          case 0: // Default pack
+            playSound('/assets/music/pianoRunHandmovement.mp3');
+            break;
+          case 1: // RnB pack
+            playSound('/assets/music/rnb/fluteIntro.mp3');
+          case 2: // Beatrice pack
+            playSound('/assets/music/beatrice/voz.mp3');
+            break;
+          default:
+            break;
+        }
+
       }
-      else{
-        playSound('/assets/music/bateria.mp3');
+      else{ // Movimento para baixo
+        // switch (pack) {
+        //   case 0: // Default pack
+        //     playSound('/assets/music/bateria.mp3');   
+        //     break;
+        //   case 1: // RnB pack
+        //     playSound('/assets/music/rnb/justBassIntro.mp3');
+        //     break;
+        //   case 2: // Beatrice pack
+        //     playSound('/assets/music/beatrice/voz.mp3');
+        //     break;
+        //   default:
+        //     break;
+        // }
       }
     }
     
     if (!alreadyPlayed && !isIndexPointing) {
-      if (wrist.x < 0.33) {
-        // console.log("Mao no ultimo terço - tocar som 1");
-        playSound('/assets/music/NewIdeaMelancolicDance.mp3');  
-      } else if (wrist.x >= 0.33 && wrist.x < 0.66) {
-        // console.log("Mao no segundo terço - tocar som 2");
-        playSound('/assets/music/jazzyPianoWDrumsNBassQuiet.mp3');  
-      } else {
-        // console.log("Mao no primeiro terço - tocar som 3");
-        playSound('/assets/music/pianoWithStringsDance.mp3'); 
+      if (wrist.x < 0.33) { // Lado direito
+        switch (pack) {
+          case 0: // Default pack
+            playSound('/assets/music/NewIdeaMelancolicDance.mp3');
+            break;
+          case 1: // RnB pack
+            playSound('/assets/music/rnb/guitarIntro.mp3');
+          case 2: // Beatrice pack
+            playSound('/assets/music/beatrice/precurssao.mp3');
+            break;
+          default:
+            break;
+        }
+      } else if (wrist.x >= 0.33 && wrist.x < 0.66) { // Meio do ecra
+        switch (pack) {
+          case 0: // Default pack
+            playSound('/assets/music/jazzyPianoWDrumsNBassQuiet.mp3'); 
+            break;
+          case 1: // RnB pack
+            playSound('/assets/music/rnb/musicaCompleta.mp3');
+          case 2: // Beatrice pack
+            playSound('/assets/music/beatrice/bassMidChorus.mp3');
+            break;
+          default:
+            break;
+        }
+      } else { // Lado esquerdo
+        switch (pack) {
+          case 0: // Default pack
+            playSound('/assets/music/pianoWithStringsDance.mp3');
+            break;
+          case 1: // RnB pack
+            playSound('/assets/music/rnb/justBassIntro.mp3');
+          case 2: // Beatrice pack
+            playSound('/assets/music/beatrice/piano2ndChorus.mp3');
+            break;
+          default:
+            break;
+        }
       }
     }
     lastHandPosition = wrist;
